@@ -93,3 +93,8 @@ The technical artefacts of the attack are covered by this report along with a cl
 ---
  
 ## Conclusion
+
+This report covered the full attacker life-cycle through each phase of the attack and successfully mapped out each tool and vulnerability used by the attacker to compromise the host for their objectives.
+The initial access was obtained via the use of a malicious document titled `free_magicules.doc`.
+The attacker encoded almost all of their commands with the use of base64 encoding and most of their steps were retraced via utilizing CyberChef to decode those commands, which painted a clear picture as to what the attacker's intentions were and how much access they had gained.
+The attacker successfully accomplished their objectives by harvesting the credentials of the user and establishing persistence via a shell utilizing `WinRM` authentication over the port `5985`.
