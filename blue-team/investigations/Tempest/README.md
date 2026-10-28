@@ -90,6 +90,20 @@ The technical artefacts of the attack are covered by this report along with a cl
 * Finally, the user executed a command to establish permanent persistence on the compromised machine via the command:
   * `C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto`
 
+## MITRE ATT&CK Mapping
+
+| Phase | Technique | ID | Key Artifact / Action |
+| :--- | :--- | :--- | :--- |
+| **Initial Access** | Spearphishing Attachment | `T1566.001` | Malicious Word doc (`free_magicules.doc`) via Follina (`CVE-2022-30190`). |
+| **Execution** | PowerShell Scripting | `T1059.001` | Base64-encoded download cradles and script execution. |
+| **Persistence** | Startup Folder | `T1547.001` | Dropping payloads (`first.exe`) into the user Startup directory. |
+| **C2** | Web Protocols (HTTP) | `T1071.001` | Beaconing to `resolvecyber[.]xyz:80` using Nim binaries and the `q` parameter. |
+| **Credential Access** | Unsecured Credentials | `T1552` | Harvesting credentials via `automation.ps1`. |
+| **Discovery** | Network Connections | `T1049` | Enumerating open listening ports (Port 5985 / WinRM). |
+| **Lateral Movement** | Protocol Tunneling / WinRM | `T1572` / `T1021` | Chisel tunneling (`ch.exe`) and WinRM remote execution. |
+| **Privilege Escalation** | Access Token Manipulation | `T1134` | Exploiting `SeImpersonatePrivilege` via PrintSpoofer (`spf.exe`) to reach `SYSTEM`. |
+| **Actions on Objectives** | Account & Service Creation | `T1136` / `T1543` | Creating users (`shion`, `shuna`), group manipulation, and `TempestUpdate2` service. |
+
 ---
  
 ## Conclusion
