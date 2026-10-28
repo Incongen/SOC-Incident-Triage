@@ -22,7 +22,7 @@
   * `sysmon.evtx` hash = `665DC3519C2C235188201B5A8594FEA205C3BCBC75193363B87D2837ACA3C91F`
   * `windows.evtx` hash = `D0279D5292BC5B25595115032820C978838678F4333B725998CFE9253E186D60`
 
-### Phase 2: Initial Access Part 1
+### Phase 2: Initial Access
 * **Provided Information:**
   * The malicious document is a `.doc` file.
   * The file was downloaded by the user using `chrome.exe`.
