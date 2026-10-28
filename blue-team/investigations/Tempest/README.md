@@ -3,16 +3,21 @@
 ## Overview
 **Environment:** Windows Workstation 
 
-**Captured Artefacts:** 'powershell.json' (Event Logs), 'capture.pcapng' (Captured Network Traffic), 'WKSTN-2961.raw' (Memory Image)
+**Captured Artefacts:** 'capture.pcapng' (Captured Network Traffic), 'sysmon.evtx' (Sysmon Event Logs), 'windows.evtx' (Windows Event Logs)
 
-**Objective:** Analyze the incident to develop a clean flow of how the attack was executed through, while making use of MITRE ATT&CK TTPs.S
+**Objective:** Analyze the incident to develop a clean flow of how the attack was executed through, while making use of MITRE ATT&CK TTPs.
 
 ---
 
 ## Investigation
 
 ### Phase 1: Preparation
-* Configured local CLI environment for artifact extraction:
-  * Log Parsing: `jq`, `grep`, `cut`, `tr`
-  * Network Forensics: `tshark`, `xxd`
-  * Memory Diagnostics: Volatility 3 framework
+* Converted artefacts into usable formats for certain tools
+  * Used EvtxEcmd to convert `sysmon.evtx` into a `.csv file`, for Timeline Explorer
+  * Used Event Viewer to convert `sysmon.evtx` into an `.xml file`, for SysmonView
+* Obtained hashes of the artefacts to ensure legitimacy via sha256sum
+  * `capture.pcapng` hash = `CB3A1E6ACFB246F256FBFEFDB6F494941AA30A5A7C3F5258C3E63CFA27A23DC6`
+  * `sysmon.evtx` hash = `665DC3519C2C235188201B5A8594FEA205C3BCBC75193363B87D2837ACA3C91F`
+  * `windows.evtx` hash = `D0279D5292BC5B25595115032820C978838678F4333B725998CFE9253E186D60`
+
+### Phase 2: 
