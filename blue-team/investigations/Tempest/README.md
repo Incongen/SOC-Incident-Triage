@@ -97,8 +97,8 @@ The technical artefacts of the attack are covered by this report along with a cl
 | **Execution** | PowerShell | `T1059.001` | Base64-encoded download cradles and script execution. |
 | **Persistence** | Registry Run Keys/Startup Folder | `T1547.001` | `update.lnk` was added into the Startup folder to execute the next stage. |
 | **Persistence** | Windows Service | `T1543.003` | sc.exe command created the automatically starting service `TempestUpdate2`, which runs `final.exe`. |
-| **Persistence** | Create Account: Local Account | T1136.001 | Created accounts `shion` and `shuna`, Event ID `4720`. |
-| **Privilege Escalation** | Account Manipulation | T1098 | Added `shion` to the Administrators group, Event ID `4732`. |
+| **Persistence** | Create Account: Local Account | `T1136.001` | Created accounts `shion` and `shuna`, Event ID `4720`. |
+| **Privilege Escalation** | Account Manipulation | `T1098` | Added `shion` to the Administrators group, Event ID `4732`. |
 | **C2** | Web Protocols (HTTP) | `T1071.001` | Beaconing to `resolvecyber[.]xyz:80` using Nim binaries and the `q` parameter. |
 | **Credential Access** | Unsecured Credentials | `T1552` | Harvesting credentials via `automation.ps1`. |
 | **Discovery** | Network Service Discovery | `T1046` | Enumerating open listening ports (Port 5985 / WinRM). |
