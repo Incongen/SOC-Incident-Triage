@@ -59,3 +59,6 @@
   * The specific URL the attacker used in the domain `resolvecyber.xyz` to retrieve the command to be executed was: `/9ab62b5`
   * The binary makes use of the `GET` HTTP method.
   * The attacker used the `nim` language to compile the binary.
+ 
+### Phase 5: Discovery
+* 
