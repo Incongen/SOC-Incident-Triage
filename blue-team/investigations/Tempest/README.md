@@ -7,7 +7,10 @@
 
 **Tools Used:** Event Viewer, Sysmon, Timeline Explorer, SysmonView, Wireshark
 
-**Objective:** Analyze the incident to develop a clean flow of how the attack was executed through, while making use of MITRE ATT&CK TTPs.
+## Introduction
+
+This incident report covers a critical severity compromise of the host `TEMPEST` and displays the full attacker lifecycle, which started with nothing more than a document, but ended up with the host being completely compromised. The attack exploits the `CVE-2022-30190` vulnerability, also known as `Follina` which goes through different stages such as Initial Access, Persistence, Command & Control, Credential Harvesting, and Privilege Escalation done by a tool called `PrintSpoofer`.
+The technical artefacts of the attack are covered by this report along with a clean MITRE ATT&CK TTP table mapping each phase of the attack.
 
 ---
 
@@ -86,3 +89,7 @@
   * Event ID: `4732`
 * Finally, the user executed a command to establish permanent persistence on the compromised machine via the command:
   * `C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto`
+
+---
+ 
+## Conclusion
