@@ -94,15 +94,16 @@ The technical artefacts of the attack are covered by this report along with a cl
 
 | Phase | Technique | ID | Key Artifact / Action |
 | :--- | :--- | :--- | :--- |
-| **Initial Access** | Spearphishing Attachment | `T1566.001` | Malicious Word doc (`free_magicules.doc`) via Follina (`CVE-2022-30190`). |
 | **Execution** | PowerShell | `T1059.001` | Base64-encoded download cradles and script execution. |
-| **Persistence** | Registry Run Keys/Startup Folder | `T1547.001` | Dropping payloads (`first.exe`) into the user Startup directory. |
+| **Persistence** | Registry Run Keys/Startup Folder | `T1547.001` | `update.lnk` was added into the Startup folder to execute the next stage. |
+| **Persistence** | Windows Service | `T1543.003` | sc.exe command created the automatically starting service `TempestUpdate2`, which runs `final.exe`. |
+| **Persistence** | Create Account: Local Account | T1136.001 | Created accounts `shion` and `shuna`, Event ID `4720`. |
+| **Privilege Escalation** | Account Manipulation | T1098 | Added `shion` to the Administrators group, Event ID `4732`. |
 | **C2** | Web Protocols (HTTP) | `T1071.001` | Beaconing to `resolvecyber[.]xyz:80` using Nim binaries and the `q` parameter. |
 | **Credential Access** | Unsecured Credentials | `T1552` | Harvesting credentials via `automation.ps1`. |
-| **Discovery** | Network Connections | `T1049` | Enumerating open listening ports (Port 5985 / WinRM). |
+| **Discovery** | Network Service Discovery | `T1046` | Enumerating open listening ports (Port 5985 / WinRM). |
 | **Lateral Movement** | Protocol Tunneling / WinRM | `T1572` / `T1021.006` | Chisel tunneling (`ch.exe`) and WinRM remote execution. |
 | **Privilege Escalation** | Access Token Manipulation | `T1134` | Exploiting `SeImpersonatePrivilege` via PrintSpoofer (`spf.exe`) to reach `SYSTEM`. |
-| **Actions on Objectives** | Account & Service Creation | `T1136.001` / `T1543.003` | Creating users (`shion`, `shuna`), group manipulation, and `TempestUpdate2` service. |
 
 ---
  
