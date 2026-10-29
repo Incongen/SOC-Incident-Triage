@@ -35,5 +35,7 @@
     * **Command Used:** `vol -f WKSTN-2961.raw windows.netscan.netscan`
   * The full file path of the malicious attachment was: `C:\Users\maxine.beck\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\WQHGZCFI\Resume_WesleyTaylor (002).doc`
     * **Command Used:** `vol -f WKSTN-2961.raw windows.filescan | grep "Resume_WesleyTaylor"`
-  * The attacker then implanted a scheduled task which runs silently daily at the same time (9:00) to open a hidden PowerShell window which proceeds to execute a script which is stored as an encoded value inside the registry, and then decoded upon execution. This allowed the attacker to establish persistence: `schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))\"'`
-    * **Command Used:** `vol -f WKSTN-2961.raw windows.memmap --dump --pid 6216`
+  * The attacker then implanted a scheduled task which was set to run silently daily at the same time (9:00) to open a hidden PowerShell window which proceeds to execute a script which is stored as an encoded value inside the registry, and then decoded upon execution. This allowed the attacker to establish persistence: `schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))\"'`
+    * **Commands Used:**
+      * `vol -f WKSTN-2961.raw windows.memmap --dump --pid 6216`
+      * `strings WKSTN-2961.raw | grep "schtasks"`
