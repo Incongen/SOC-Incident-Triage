@@ -32,3 +32,7 @@
 .. | strings
 | scan("(?i)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+(?:[a-z]{2,})")
 ' powershell.json | sort -u`
+* Same command also revealed the tool used by the attacker, `Seatbelt`, which was used for enumeration.
+* The attacker downloaded a malicious binary titled `sq3.exe`, with the following file path: `C:\\Users\\j.westcott\\AppData\\Local\\Packages\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\\LocalState\\plum.sqlite`
+  * The command to trace the attacker's executed `cd` commands was used: `cat powershell.json | jq -s -c 'sort_by(.Timestamp) | .[]' | jq '{ScriptBlockText}' | sort -u | grep -e "sq3.exe" -e "cd"
+```[cite: 4]`
