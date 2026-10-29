@@ -9,7 +9,7 @@
 
 ## Introduction
 
-
+This incident covers the compromise of a host who worked as a Human Resource Specialist for a company, which started from what appeared to be an application from an open position inside the company. The resume attached to the e-mail was malicious and contained macros which downloaded malicious files and binaries to the victim's workstation. Some suspicious commands were flagged by the security team, which prompted the investigation.
 
 ---
 
@@ -48,3 +48,7 @@
 | Execution | User Execution: Malicious File | T1204.002 | The victim opened the malicious Word document, initiating the infection chain. |
 | Execution | Command and Scripting Interpreter: JavaScript | T1059.007 | The document's macros used `wscript.exe` to execute the JavaScript payload at `C:\ProgramData\update.js`. |
 | Persistence | Scheduled Task/Job: Scheduled Task | T1053.005 | The attacker created a scheduled task named `Updater`, configured to run daily at 09:00. The task launched hidden PowerShell to decode and execute a script stored in the registry. |
+
+
+## Conclusion
+This report covered the events that occurred after a malicious document containing macros executed on a workstation. What appeared to be a benign document in reality started an attack chain where, a payload was downloaded which proceeded to download further binaries and establish persistence with the use of a scheduled task that opened a powershell window at the exact same time everyday. This was a prime example of how attackers use social engineering for successful phishing campaigns.
