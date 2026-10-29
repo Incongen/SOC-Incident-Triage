@@ -1,7 +1,7 @@
 # Incident Report - Boogeyman 2
 
 ## Overview
-**Environment:** Linux Ubuntu
+**Environment:** Windows
 
 **Captured Artefacts:** Copy of the original Phishing E-mail, `WKSTN-2961.raw` (Memory dump of the victim's workstation)
 
