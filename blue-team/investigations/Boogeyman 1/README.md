@@ -66,3 +66,6 @@ This incident report covers the compromise of a host which started from nothing 
 | Credential Access | Credentials from Password Stores: Password Managers | T1555.005 | The attacker obtained and unlocked the KeePass database `protected_data.kdbx`. |
 | Exfiltration | Exfiltration Over Alternative Protocol | T1048 | DNS queries carried encoded data that was used to reconstruct the exfiltrated KeePass database. |
 | Exfiltration | Exfiltration Over Alternative Protocol: Unencrypted Non-C2 Protocol | T1048.003 | The attacker used DNS queries to transfer encoded data outside the primary HTTP-based C2 channel. |
+
+## Conclusion
+This report covered the different stages of the attack life-cycle, such as using a malicious e-mail attachment titled `Invoice.zip` to gain Initial Access to the host, then using a shortcut file with encoded powershell commands to establish a C2 connection that allowed the attacker to download the tool `Seatbelt` for enumeration. The attacker harvested credentials from the Windows Sticky Notes database and then proceeded to unlock a sensitive database titled `protected_data.kdbx` which contained extremely sensitive credit card information which the attacker proceeded to exfiltrate over DNS.
