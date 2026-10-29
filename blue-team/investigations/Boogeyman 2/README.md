@@ -39,3 +39,12 @@
     * **Commands Used:**
       * `vol -f WKSTN-2961.raw windows.memmap --dump --pid 6216`
       * `strings WKSTN-2961.raw | grep "schtasks"`
+
+## MITRE ATT&CK Mapping
+
+| Tactic | Technique | Technique ID | Evidence |
+|---|---|---|---|
+| Initial Access | Phishing: Spearphishing Attachment | T1566.001 | The victim received a phishing email containing the malicious `Resume_WesleyTaylor.doc` attachment. |
+| Execution | User Execution: Malicious File | T1204.002 | The victim opened the malicious Word document, initiating the infection chain. |
+| Execution | Command and Scripting Interpreter: JavaScript | T1059.007 | The document's macros used `wscript.exe` to execute the JavaScript payload at `C:\ProgramData\update.js`. |
+| Persistence | Scheduled Task/Job: Scheduled Task | T1053.005 | The attacker created a scheduled task named `Updater`, configured to run daily at 09:00. The task launched hidden PowerShell to decode and execute a script stored in the registry. |
