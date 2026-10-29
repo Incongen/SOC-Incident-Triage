@@ -1,7 +1,7 @@
 # Incident Report - Boogeyman 1
 
 ## Overview
-**Environment:** Linux Ubuntu
+**Environment:** Windows
 
 **Captured Artefacts:** `capture.pcapng` (Captured Network Traffic), `dump.eml` (Copy of The Phishing E-mail), `powershell.json` (Powershell Logs)
 
