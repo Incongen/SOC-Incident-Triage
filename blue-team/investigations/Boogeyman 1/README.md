@@ -58,11 +58,11 @@ This incident report covers the compromise of a host which started from nothing 
 
 | Tactic | Technique | Technique ID | Evidence |
 |---|---|---|---|
-| Initial Access | [Spearphishing Attachment](https://attack.mitre.org/techniques/T1566/001/) | T1566.001 | The malicious `Invoice.zip` attachment contained `Invoice_20230103.lnk`. |
-| Execution | [PowerShell](https://attack.mitre.org/techniques/T1059/001/) | T1059.001 | The malicious LNK file contained an encoded PowerShell command that downloaded a script from an attacker-controlled domain. |
-| Command and Control | [Web Protocols](https://attack.mitre.org/techniques/T1071/001/) | T1071.001 | HTTP traffic included POST requests associated with attacker communications. |
-| Discovery | [System Information Discovery](https://attack.mitre.org/techniques/T1082/) | T1082 | Seatbelt was identified in the PowerShell logs as an enumeration tool. |
-| Collection | [Data from Local System](https://attack.mitre.org/techniques/T1005/) | T1005 | The attacker accessed the Windows Sticky Notes database (`plum.sqlite`) while attempting to harvest stored information. |
-| Credential Access | [Credentials from Password Stores: Password Managers](https://attack.mitre.org/techniques/T1555/005/) | T1555.005 | The attacker obtained and unlocked the KeePass database `protected_data.kdbx`. |
-| Exfiltration | [Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/) | T1048 | DNS queries carried encoded data that was used to reconstruct the exfiltrated KeePass database. |
-| Exfiltration | [Exfiltration Over Alternative Protocol: Unencrypted Non-C2 Protocol](https://attack.mitre.org/techniques/T1048/003/) | T1048.003 | The attacker used DNS queries to transfer encoded data outside the primary HTTP-based C2 channel. |
+| Initial Access | Spearphishing Attachment | T1566.001 | The malicious `Invoice.zip` attachment contained `Invoice_20230103.lnk`. |
+| Execution | PowerShell | T1059.001 | The malicious LNK file contained an encoded PowerShell command that downloaded a script from an attacker-controlled domain. |
+| Command and Control | Web Protocols | T1071.001 | HTTP traffic included POST requests associated with attacker communications. |
+| Discovery | System Information Discovery | T1082 | Seatbelt was identified in the PowerShell logs as an enumeration tool. |
+| Collection | Data from Local System | T1005 | The attacker accessed the Windows Sticky Notes database (`plum.sqlite`) while attempting to harvest stored information. |
+| Credential Access | Credentials from Password Stores: Password Managers | T1555.005 | The attacker obtained and unlocked the KeePass database `protected_data.kdbx`. |
+| Exfiltration | Exfiltration Over Alternative Protocol | T1048 | DNS queries carried encoded data that was used to reconstruct the exfiltrated KeePass database. |
+| Exfiltration | Exfiltration Over Alternative Protocol: Unencrypted Non-C2 Protocol | T1048.003 | The attacker used DNS queries to transfer encoded data outside the primary HTTP-based C2 channel. |
