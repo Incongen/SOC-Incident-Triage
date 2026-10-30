@@ -92,7 +92,7 @@ The technical artefacts of the attack are covered by this report along with a cl
 
 ## MITRE ATT&CK Mapping
 
-| Phase | Technique | ID | Evidence |
+| Tactic | Technique | ID | Evidence |
 | :--- | :--- | :--- | :--- |
 | **Execution** | PowerShell | `T1059.001` | Base64-encoded download cradles and script execution. |
 | **Persistence** | Registry Run Keys/Startup Folder | `T1547.001` | `update.lnk` was added into the Startup folder to execute the next stage. |
@@ -103,7 +103,7 @@ The technical artefacts of the attack are covered by this report along with a cl
 | **Credential Access** | Unsecured Credentials | `T1552` | Harvesting credentials via `automation.ps1`. |
 | **Discovery** | Network Service Discovery | `T1046` | Enumerating open listening ports (Port 5985 / WinRM). |
 | **Lateral Movement** | Protocol Tunneling / WinRM | `T1572` / `T1021.006` | Chisel tunneling (`ch.exe`) and WinRM remote execution. |
-| **Privilege Escalation** | Access Token Manipulation | `T1134` | Exploiting `SeImpersonatePrivilege` via PrintSpoofer (`spf.exe`) to reach `SYSTEM`. |
+| **Privilege Escalation** | Token Impersonation/Theft | T1134.001 | `PrintSpoofer` abused the `SeImpersonatePrivilege` privilege to obtain a SYSTEM-level process. |
 
 ---
  
