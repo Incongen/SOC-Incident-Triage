@@ -9,7 +9,7 @@
 
 ## Introduction
 
-
+This incident report covers a compromise of a host which started from an e-mail attachment titled `ProjectFinancialSummary_Q3.pdf`. This time, the consequences would be significantly more severe, as the recipient was the CEO of the company. After the CEO `Evan` had opened the attachment, `Evan` didn't notice anything happening. So, he reported the incident to the Security Operations team.
 
 ---
 
