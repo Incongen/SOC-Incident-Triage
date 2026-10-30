@@ -32,4 +32,5 @@
   * The credentials the attacker dumped were for the account `itadmin` with the NTLM hash `[REDACTED]`.
 * With the brand new credentials, the attacker attempted to enumerate all the accessible file shares and accessed a file called `IT_Automation.ps1`.
   * The attacker obtained the credentials for the account `QUICKLOGISTICS\allan.smith` with the password `[REDACTED]` from the `IT_Automation.ps1` file, and proceeded to move laterally.
+* Under the `-ComputerName` header, it was revealed that the attacker's lab machine was named `WKSTN-1327`.
 * 
