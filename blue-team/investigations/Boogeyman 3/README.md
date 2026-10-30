@@ -58,3 +58,9 @@ This incident report covers a compromise of a host which started from an e-mail 
 | Lateral Movement | Remote Services: Windows Remote Management | T1021.006 | `wsmprovhost.exe` was the parent process of PowerShell on `WKSTN-1327`, consistent with execution through WinRM. |
 | Execution | Command and Scripting Interpreter: PowerShell | T1059.001 | PowerShell was used to create the scheduled task and execute the Base64-encoded command on the remote workstation. |
 | Credential Access | OS Credential Dumping: DCSync | T1003.006 | The attacker performed a DCSync attack against the Domain Controller to obtain domain credential material. |
+
+## Conclusion
+
+This report covered the different stages of the attack life-cycle which began from a malicious attachment inside an e-mail. Opening this e-mail led to the attacker gaining access to the victim host's workstation and began establishing persistence with implanted files and scheduled tasks. After this, the attacker proceeded to dump the credentials inside the host's workstation, then moving laterally to other workstations on the network and dumping credentials there as well. After all this, the attacker gained access to the domain controller and proceeded to dump more credentials via a DCSync attack, then attempted to install a ransomware binary named `ransomboogey.exe`.
+
+The Boogeyman trilogy showed just how easy it is for an attacker to gain access to a system and wreak havoc by something as seemingly small as an e-mail attachment, which makes it even more necessary to provide employees with proper training to avoid dire consequences.
