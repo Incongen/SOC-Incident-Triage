@@ -42,3 +42,19 @@
   * The credentials were dumped for the user `administrator` with the hash `[REDACTED]`.
 * After this, the attacker gained access to the Domain Controller and proceeded to dump the hashes via a DCSync attack, which also included the credentials of another account, `backupda`.
 * After dumping all the credentials, the attacker proceeded to attempt downloading a ransomware binary from the following link: `hxxp://ff[.]sillytechninja[.]io/ransomboogey[.]exe`.
+
+## MITRE ATT&CK Framework
+
+| MITRE ATT&CK ID | Technique | Tactic | Evidence |
+|---|---|---|---|
+| T1204.002 | User Execution: Malicious File | Execution | The recipient opened the malicious PDF attachment, initiating the attack chain. |
+| T1218.011 | System Binary Proxy Execution: Rundll32 | Defense Evasion | `rundll32.exe` was used to load `review.dat` and invoke its `DllRegisterServer` export. |
+| T1053.005 | Scheduled Task/Job: Scheduled Task | Execution, Persistence, Privilege Escalation | A scheduled task named `Review` was registered to execute `review.dat` daily at 06:00. |
+| T1548.002 | Abuse Elevation Control Mechanism: Bypass User Account Control | Privilege Escalation | The attacker attempted to bypass UAC using `fodhelper.exe`. |
+| T1105 | Ingress Tool Transfer | Command and Control | Mimikatz was downloaded from its GitHub release URL. The attacker also attempted to download a ransomware binary. |
+| T1003.001 | OS Credential Dumping: LSASS Memory | Credential Access | Mimikatz was used to dump credentials from LSASS memory on the initial machine and the second workstation. |
+| T1135 | Network Share Discovery | Discovery | The attacker enumerated accessible file shares before accessing `IT_Automation.ps1`. |
+| T1552.001 | Unsecured Credentials: Credentials In Files | Credential Access | Credentials for `QUICKLOGISTICS\allan.smith` were discovered in `IT_Automation.ps1`. |
+| T1021.006 | Remote Services: Windows Remote Management | Lateral Movement | `wsmprovhost.exe` was the parent process of PowerShell on `WKSTN-1327`, consistent with execution through WinRM. |
+| T1059.001 | Command and Scripting Interpreter: PowerShell | Execution | PowerShell was used to create the scheduled task and execute the Base64-encoded command on the remote workstation. |
+| T1003.006 | OS Credential Dumping: DCSync | Credential Access | The attacker performed a DCSync attack against the Domain Controller to obtain domain credential material. |
