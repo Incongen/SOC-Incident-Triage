@@ -92,7 +92,7 @@ The technical artefacts of the attack are covered by this report along with a cl
 
 ## MITRE ATT&CK Mapping
 
-| Phase | Technique | ID | Key Artifact / Action |
+| Phase | Technique | ID | Evidence |
 | :--- | :--- | :--- | :--- |
 | **Execution** | PowerShell | `T1059.001` | Base64-encoded download cradles and script execution. |
 | **Persistence** | Registry Run Keys/Startup Folder | `T1547.001` | `update.lnk` was added into the Startup folder to execute the next stage. |
