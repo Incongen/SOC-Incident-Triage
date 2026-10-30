@@ -45,16 +45,16 @@
 
 ## MITRE ATT&CK Framework
 
-| MITRE ATT&CK ID | Technique | Tactic | Evidence |
+| Tactic | Technique | Technique ID | Evidence |
 |---|---|---|---|
-| T1204.002 | User Execution: Malicious File | Execution | The recipient opened the malicious PDF attachment, initiating the attack chain. |
-| T1218.011 | System Binary Proxy Execution: Rundll32 | Defense Evasion | `rundll32.exe` was used to load `review.dat` and invoke its `DllRegisterServer` export. |
-| T1053.005 | Scheduled Task/Job: Scheduled Task | Execution, Persistence, Privilege Escalation | A scheduled task named `Review` was registered to execute `review.dat` daily at 06:00. |
-| T1548.002 | Abuse Elevation Control Mechanism: Bypass User Account Control | Privilege Escalation | The attacker attempted to bypass UAC using `fodhelper.exe`. |
-| T1105 | Ingress Tool Transfer | Command and Control | Mimikatz was downloaded from its GitHub release URL. The attacker also attempted to download a ransomware binary. |
-| T1003.001 | OS Credential Dumping: LSASS Memory | Credential Access | Mimikatz was used to dump credentials from LSASS memory on the initial machine and the second workstation. |
-| T1135 | Network Share Discovery | Discovery | The attacker enumerated accessible file shares before accessing `IT_Automation.ps1`. |
-| T1552.001 | Unsecured Credentials: Credentials In Files | Credential Access | Credentials for `QUICKLOGISTICS\allan.smith` were discovered in `IT_Automation.ps1`. |
-| T1021.006 | Remote Services: Windows Remote Management | Lateral Movement | `wsmprovhost.exe` was the parent process of PowerShell on `WKSTN-1327`, consistent with execution through WinRM. |
-| T1059.001 | Command and Scripting Interpreter: PowerShell | Execution | PowerShell was used to create the scheduled task and execute the Base64-encoded command on the remote workstation. |
-| T1003.006 | OS Credential Dumping: DCSync | Credential Access | The attacker performed a DCSync attack against the Domain Controller to obtain domain credential material. |
+| Execution | User Execution: Malicious File | T1204.002 | The recipient opened the malicious PDF attachment, initiating the attack chain. |
+| Defense Evasion | System Binary Proxy Execution: Rundll32 | T1218.011 | `rundll32.exe` was used to load `review.dat` and invoke its `DllRegisterServer` export. |
+| Execution, Persistence, Privilege Escalation | Scheduled Task/Job: Scheduled Task | T1053.005 | A scheduled task named `Review` was registered to execute `review.dat` daily at 06:00. |
+| Privilege Escalation | Abuse Elevation Control Mechanism: Bypass User Account Control | T1548.002 | The attacker attempted to bypass UAC using `fodhelper.exe`. |
+| Command and Control | Ingress Tool Transfer | T1105 | Mimikatz was downloaded from its GitHub release URL. The attacker also attempted to download a ransomware binary. |
+| Credential Access | OS Credential Dumping: LSASS Memory | T1003.001 | Mimikatz was used to dump credentials from LSASS memory on the initial machine and the second workstation. |
+| Discovery | Network Share Discovery | T1135 | The attacker enumerated accessible file shares before accessing `IT_Automation.ps1`. |
+| Credential Access | Unsecured Credentials: Credentials In Files | T1552.001 | Credentials for `QUICKLOGISTICS\allan.smith` were discovered in `IT_Automation.ps1`. |
+| Lateral Movement | Remote Services: Windows Remote Management | T1021.006 | `wsmprovhost.exe` was the parent process of PowerShell on `WKSTN-1327`, consistent with execution through WinRM. |
+| Execution | Command and Scripting Interpreter: PowerShell | T1059.001 | PowerShell was used to create the scheduled task and execute the Base64-encoded command on the remote workstation. |
+| Credential Access | OS Credential Dumping: DCSync | T1003.006 | The attacker performed a DCSync attack against the Domain Controller to obtain domain credential material. |
