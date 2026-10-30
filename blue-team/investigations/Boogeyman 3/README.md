@@ -43,7 +43,7 @@
 * After this, the attacker gained access to the Domain Controller and proceeded to dump the hashes via a DCSync attack, which also included the credentials of another account, `backupda`.
 * After dumping all the credentials, the attacker proceeded to attempt downloading a ransomware binary from the following link: `hxxp://ff[.]sillytechninja[.]io/ransomboogey[.]exe`.
 
-## MITRE ATT&CK Framework
+## MITRE ATT&CK Mapping
 
 | Tactic | Technique | Technique ID | Evidence |
 |---|---|---|---|
